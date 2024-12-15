@@ -33,11 +33,17 @@ from django.shortcuts import redirect
 
 
 def custom_login(request):
+    print(request.user.is_superuser)
+    print("----")
     if request.user.is_authenticated:  # Check if the user is already logged in
-        if request.user.user_type == 'type1':
+        if request.user.is_superuser:  # Redirect superusers to the admin site
+            return redirect('admin')
+        elif request.user.user_type == 'type1':
             return redirect('type1_dashboard')
         elif request.user.user_type == 'type2':
             return redirect('type2_dashboard')
+        else:
+            return redirect('login')
 
     if request.method == 'POST':
         form = CustomAuthenticationForm(request, data=request.POST)
