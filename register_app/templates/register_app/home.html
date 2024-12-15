@@ -1,0 +1,13 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href='{% static "register_app/css/style.css" %}'>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Register App</h1>
+    <a href="{% url 'login' %}">Login</a><br>
+    <a href="{% url 'register_type1' %}">Register User Type 1</a><br>
+    <a href="{% url 'register_type2' %}">Register User Type 2</a>
+</body>
+</html>
